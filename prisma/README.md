@@ -45,7 +45,7 @@ npx prisma init
 
 ### Creating an Object
 
-```json
+```
 
 // define table
 
