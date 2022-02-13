@@ -178,6 +178,10 @@ model user {
 
 **Note: we make post field as an array because it is a 1:many relationship between user (1) → post (M).
 
+### Joins
+joins in prisma: not necessary as it is already covered in the `select`
+statement
+
 
 ### Prisma Data Studio
 
