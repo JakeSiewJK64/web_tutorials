@@ -1,10 +1,20 @@
 
+![prisma](https://camo.githubusercontent.com/001ae294ec710ba28e1cad6f1f398ddedf48518684700930fc1a111793e8dd2a/68747470733a2f2f692e696d6775722e636f6d2f683655495954752e706e67)
+
+
 # What is Prisma?
 
 Prisma is an ORM (Object Relational Mapping) for Node.js which allows you to map objects to database entities. You can do database migrations and it ships with its own GUI to view your database.
 
 Tutorial: https://youtu.be/mU8-nKwfw4Y
 
+Official Github: https://github.com/prisma/prisma
+
+Prisma.io page: https://www.prisma.io/
+
+Prisma NPM: https://www.npmjs.com/package/prisma
+
+Prisma Client NPM: https://www.npmjs.com/package/@prisma/client
   
 
 ### Initializing Node Environment
