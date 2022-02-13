@@ -41,7 +41,15 @@ router.post("/insertPost", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const posts = await post.findMany();
+  const posts = await post.findMany({
+    select: {
+      title: true,
+      user: true,
+      createdAt: true,
+      updatedAt: true,
+      userid: true,
+    },
+  });
   res.json(posts);
 });
 
