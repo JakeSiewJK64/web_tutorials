@@ -11,10 +11,26 @@ model user {
   id       Int     @id @unique @default(autoincrement())
   username String  @unique @db.VarChar(255)
   gender   String? @db.Char(1)
+  post     post[]
+
+  @@map("users")
+}
+
+model post {
+  id        Int      @id @unique @default(autoincrement())
+  title     String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userid    Int
+  user      user     @relation(fields: [userid], references: [id])
+
+  @@map("posts")
 }
 
 model user_role {
   roleid          Int    @id @default(autoincrement())
   rolename        String @db.VarChar(255)
   roledescription String @db.VarChar(255)
+
+  @@map("userrole")
 }
