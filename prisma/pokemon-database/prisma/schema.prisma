@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  categoryName String @id @db.VarChar(255)
+  categoryDescription String @db.Text
+
+  @@map("category")
+}
+
+model Weakness {
+  weaknessId Int @id @unique @default(autoincrement())
+  title String @db.VarChar(255)
+  typeName String
+  type Type @relation(fields: [typeName], references: [type])
+}
+
+model Type {
+  type String @db.VarChar(255) @unique @id
+  typeDescription String @db.VarChar(255)
+  weakness Weakness[]
+}
+
+
