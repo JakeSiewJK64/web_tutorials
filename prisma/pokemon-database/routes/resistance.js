@@ -72,13 +72,7 @@ router.get("/exportResistance", async (req, res) => {
 
   workbook.xlsx.writeFile(filePath);
 
-  res.setHeader(
-    "Content-Type",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-  );
-  res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
   res.sendFile(path.resolve("./resistance_pokemon.xlsx"));
-
 });
 
 module.exports = router;
