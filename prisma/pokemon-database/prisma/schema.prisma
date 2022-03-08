@@ -17,17 +17,44 @@ model Category {
   @@map("category")
 }
 
+model Pokemon {
+
+  pokemonId Int @id @unique @default(autoincrement())
+  pokemonName String @unique @db.VarChar(255)
+  damage Float
+  defence Float
+  health Float
+  weakness Weakness[]
+  resistance Resistance[]
+  @@map("pokemon")
+}
+
+model Resistance {
+  resistanceId Int @id @unique @default(autoincrement())
+  resistanceType String
+  pokemonId Int
+  pokemon Pokemon @relation(fields: [pokemonId], references: [pokemonId])
+  type Type @relation(fields: [resistanceType], references: [type])
+
+  @@map("resistance")
+}
+
 model Weakness {
   weaknessId Int @id @unique @default(autoincrement())
-  title String @db.VarChar(255)
+  pokemonId Int 
   typeName String
+  pokemon Pokemon @relation(fields: [pokemonId], references: [pokemonId])
   type Type @relation(fields: [typeName], references: [type])
+
+  @@map("weakness")
 }
 
 model Type {
   type String @db.VarChar(255) @unique @id
   typeDescription String @db.VarChar(255)
   weakness Weakness[]
+  resistance Resistance[]
+  @@map("type")
 }
 
 
