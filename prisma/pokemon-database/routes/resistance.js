@@ -81,6 +81,11 @@ router.get("/exportResistanceCSV", async (req, res) => {
 });
 
 router.get("/exportResistanceExcel", async (req, res) => {
+  const fileName = "resistance_pokemon.xlsx";
+  const workbook = new excel.Workbook();
+  const worksheet = workbook.addWorksheet("resistance");
+  const filePath = `./${fileName}`;
+  
   const resistances = await resistance.findMany({
     select: {
       type: true,
@@ -88,10 +93,6 @@ router.get("/exportResistanceExcel", async (req, res) => {
     },
   });
 
-  const fileName = "resistance_pokemon.xlsx";
-  const workbook = new excel.Workbook();
-  const worksheet = workbook.addWorksheet("resistance");
-  const filePath = `./${fileName}`;
   worksheet.columns = [
     { header: "Type", key: "type", width: 10 },
     { header: "PokemonName", key: "pokemonName", width: 32 },
