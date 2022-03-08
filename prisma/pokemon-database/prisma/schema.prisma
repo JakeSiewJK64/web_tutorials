@@ -11,22 +11,47 @@ datasource db {
 }
 
 model Category {
-  categoryName        String @id @db.VarChar(255)
-  categoryDescription String @db.Text
+  categoryName        String    @id @db.VarChar(255)
+  categoryDescription String    @db.Text
+  pokemon             Pokemon[]
 
   @@map("category")
 }
 
-model Pokemon {
+model Ability {
+  abilityId          Int      @id @unique @default(autoincrement())
+  abilityName        String   @unique @db.VarChar(255)
+  abilityDescription String   @db.VarChar(255)
+  pokemonId          Int
+  pokemon            Pokemon? @relation(fields: [pokemonId], references: [pokemonId])
 
+  @@map("ability")
+}
+
+model Habitat {
+  habitatName        String    @id @unique
+  habitatDescription String
+  pokemon            Pokemon[]
+
+  @@map("habitat")
+}
+
+model Pokemon {
   pokemonId        Int                @id @unique @default(autoincrement())
   pokemonName      String             @unique @db.VarChar(255)
   damage           Float
   defence          Float
   health           Float
+  categoryName     String
+  habitatName      String
+  abilityId        Int?
+  habitat          Habitat            @relation(fields: [habitatName], references: [habitatName])
+  category         Category           @relation(fields: [categoryName], references: [categoryName])
+  ability          Ability[]
   weakness         Weakness[]
   resistance       Resistance[]
   PokemonOwnership PokemonOwnership[]
+
   @@map("pokemon")
 }
 
