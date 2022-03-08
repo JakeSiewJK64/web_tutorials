@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Category {
-  categoryName String @id @db.VarChar(255)
+  categoryName        String @id @db.VarChar(255)
   categoryDescription String @db.Text
 
   @@map("category")
@@ -19,42 +19,63 @@ model Category {
 
 model Pokemon {
 
-  pokemonId Int @id @unique @default(autoincrement())
-  pokemonName String @unique @db.VarChar(255)
-  damage Float
-  defence Float
-  health Float
-  weakness Weakness[]
-  resistance Resistance[]
+  pokemonId        Int                @id @unique @default(autoincrement())
+  pokemonName      String             @unique @db.VarChar(255)
+  damage           Float
+  defence          Float
+  health           Float
+  weakness         Weakness[]
+  resistance       Resistance[]
+  PokemonOwnership PokemonOwnership[]
   @@map("pokemon")
 }
 
 model Resistance {
-  resistanceId Int @id @unique @default(autoincrement())
+  resistanceId   Int     @id @unique @default(autoincrement())
   resistanceType String
-  pokemonId Int
-  pokemon Pokemon @relation(fields: [pokemonId], references: [pokemonId])
-  type Type @relation(fields: [resistanceType], references: [type])
+  pokemonId      Int
+  pokemon        Pokemon @relation(fields: [pokemonId], references: [pokemonId])
+  type           Type    @relation(fields: [resistanceType], references: [type])
 
   @@map("resistance")
 }
 
 model Weakness {
-  weaknessId Int @id @unique @default(autoincrement())
-  pokemonId Int 
-  typeName String
-  pokemon Pokemon @relation(fields: [pokemonId], references: [pokemonId])
-  type Type @relation(fields: [typeName], references: [type])
+  weaknessId Int     @id @unique @default(autoincrement())
+  pokemonId  Int
+  typeName   String
+  pokemon    Pokemon @relation(fields: [pokemonId], references: [pokemonId])
+  type       Type    @relation(fields: [typeName], references: [type])
 
   @@map("weakness")
 }
 
-model Type {
-  type String @db.VarChar(255) @unique @id
-  typeDescription String @db.VarChar(255)
-  weakness Weakness[]
-  resistance Resistance[]
-  @@map("type")
+model Trainer {
+  trainerId        Int                @unique @default(autoincrement())
+  trainerFirstName String             @db.VarChar(255)
+  trainerLastName  String             @db.VarChar(255)
+  gender           String             @db.VarChar(1)
+  trainerLevel     Float
+  pokemonRelation  PokemonOwnership[]
+
+  @@map("trainer")
 }
 
+model PokemonOwnership {
+  ownershipId Int     @id @unique @default(autoincrement())
+  trainerId   Int
+  pokemonId   Int
+  trainer     Trainer @relation(fields: [trainerId], references: [trainerId])
+  pokemon     Pokemon @relation(fields: [pokemonId], references: [pokemonId])
 
+  @@map("pokemonOwnership")
+}
+
+model Type {
+  type            String       @id @unique @db.VarChar(255)
+  typeDescription String       @db.VarChar(255)
+  weakness        Weakness[]
+  resistance      Resistance[]
+
+  @@map("type")
+}
