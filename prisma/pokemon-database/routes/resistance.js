@@ -4,6 +4,8 @@ const { resistance, pokemon, type } = new PrismaClient();
 const excel = require("exceljs");
 const path = require("path");
 
+const createCsvWriter = require("csv-writer").createObjectCsvWriter;
+
 router.get("/", async (_, res) => {
   const resistances = await resistance.findMany({
     select: {
@@ -46,7 +48,39 @@ router.post("/insertResistance", async (req, res) => {
   }
 });
 
-router.get("/exportResistance", async (req, res) => {
+router.get("/exportResistanceCSV", async (req, res) => {
+  const csvPath = path.resolve("./resistance.csv");
+  const csvWriter = createCsvWriter({
+    path: csvPath,
+    header: [
+      { id: "type", name: "Type" },
+      { id: "pokemon", name: "Pokemon" },
+    ],
+  });
+
+  const resistances = await resistance.findMany({
+    select: {
+      pokemon: true,
+      type: true,
+    },
+  });
+
+  var records = [];
+  resistances.forEach((x) => {
+    records.push({
+      type: x.type.type,
+      pokemon: x.pokemon.pokemonName,
+    });
+  });
+
+  csvWriter.writeRecords(records).then((x) => {
+    res.sendFile(csvPath);
+  });
+
+  console.info("CSV file exported successfully");
+});
+
+router.get("/exportResistanceExcel", async (req, res) => {
   const resistances = await resistance.findMany({
     select: {
       type: true,
