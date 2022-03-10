@@ -1,11 +1,16 @@
 import "./App.css";
 
-import Resistance from "./components/resistance/resistance";
+import Characters from "./components/ricknmorty/Characters";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="App">
-      <Resistance />
+      <QueryClientProvider client={queryClient}>
+        <Characters />
+      </QueryClientProvider>
     </div>
   );
 }
