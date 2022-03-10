@@ -10,7 +10,7 @@ export default function Resistance() {
     );
     return response.json();
   };
-  const { data, status, isPreviousData } = useQuery(
+  const { data, status } = useQuery(
     ["characters", page],
     fetchCharacters,
     {
