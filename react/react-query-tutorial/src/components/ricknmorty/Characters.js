@@ -5,7 +5,6 @@ import Character from "./Character";
 export default function Resistance() {
   const [page, setPage] = useState(1);
   const fetchCharacters = async ({ queryKey }) => {
-    console.log(queryKey);
     const response = await fetch(
       `https://rickandmortyapi.com/api/character?page=${queryKey[1]}`
     );
