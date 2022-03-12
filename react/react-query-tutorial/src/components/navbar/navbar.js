@@ -22,13 +22,13 @@ export default function Navbar() {
             <Icon path={mdiAccount} size={1} />
           </IconButton>
         </Box>
-        <Box className="fxShow-md" sx={{ display: "flex" }}>
+        <Box className="fxHide-md" sx={{ display: "flex" }}>
           <Typography color={"black"} sx={{ padding: "5px" }}>
             News
           </Typography>
           <Button>Button</Button>
         </Box>
-        <Box className="fxShow-xs">
+        <Box className="fxHide-xs">
           <IconButton>
             <Icon path={mdiMenu} size={1} />
           </IconButton>
