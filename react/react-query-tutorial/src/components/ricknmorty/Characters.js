@@ -10,13 +10,9 @@ export default function Resistance() {
     );
     return response.json();
   };
-  const { data, status } = useQuery(
-    ["characters", page],
-    fetchCharacters,
-    {
-      keepPreviousData: true,
-    }
-  );
+  const { data, status } = useQuery(["characters", page], fetchCharacters, {
+    keepPreviousData: true,
+  });
 
   if (status === "loading") {
     return <div>loading...</div>;
@@ -28,7 +24,7 @@ export default function Resistance() {
   return (
     <div className="characters">
       {data.results.map((x) => {
-        return <Character character={x} />;
+        return <Character character={x} key={x.id} />;
       })}
       <button
         disabled={page === 1}
