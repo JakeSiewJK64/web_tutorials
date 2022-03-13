@@ -14,6 +14,7 @@ import Usereducer from "./components/usereducer/usereducer";
 import { BankStore } from "./components/redux-tutorial/store/bank-store";
 import Bankredux from "./components/redux-tutorial/redux-pages/bank/bank-redux";
 import Pokemonredux from "./components/redux-tutorial/redux-pages/pokemon/pokemon-redux";
+import PokemonContext from "./components/context-tutorial/pokemon/pokemon-context";
 
 const queryClient = new QueryClient();
 
@@ -33,9 +34,11 @@ function App() {
                 />
                 <Route path="signup" element={<Signup />} />
                 <Route path="doughnut" element={<DoughnutChart />} />
-                <Route path="signup" element={<Signup />} />
-                <Route path="counter" element={<Parent />} />
                 <Route path="reducer" element={<Usereducer />} />
+              </Route>
+              <Route path="context">
+                <Route path="counter" element={<Parent />} />
+                <Route path="pokemon" element={<PokemonContext />} />
               </Route>
               <Route path="reduxtutorial">
                 <Route path="bankredux" element={<Bankredux />} />
