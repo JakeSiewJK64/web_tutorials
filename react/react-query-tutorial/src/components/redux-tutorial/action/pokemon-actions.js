@@ -1,11 +1,8 @@
-import {} from "react-redux";
-import {} from "redux";
-
-export function getPokemon(pokemons) {
+export function postPokemon(pokemon, state) {
   return function (dispatch) {
     dispatch({
       type: "GET_POKEMON",
-      payload: pokemons,
+      payload: state.push(pokemon),
     });
   };
 }
