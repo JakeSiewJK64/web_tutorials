@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import { ActionCreators } from "./action/bank-action-creators";
+import { ActionCreators } from "../../action/bank-action-creators";
 import { Button } from "@mui/material";
 
 export default function Bankredux() {
