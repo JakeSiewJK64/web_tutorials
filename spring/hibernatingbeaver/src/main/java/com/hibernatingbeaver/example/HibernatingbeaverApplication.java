@@ -1,4 +1,4 @@
-package com.hibernatingbeaver.hibernatingbeaver;
+package com.hibernatingbeaver.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
