@@ -6,4 +6,5 @@ import com.hibernatingbeaver.example.models.MenuItem;
 
 public interface MenuDao {
   List<MenuItem> getAllMenuItem();
+  MenuItem findOneMenu(Integer id);
 }

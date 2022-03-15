@@ -8,6 +8,8 @@ import com.hibernatingbeaver.example.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,5 +21,11 @@ public class MenuController {
   @GetMapping("allMenu")
   public List<MenuItem> getAllMenu() {
     return menuService.getAllMenuItems();
+  }
+
+  @ResponseBody
+  @GetMapping("findMenu")
+  public MenuItem findOneMenu(@RequestParam Integer id) {
+    return menuService.findOMenuItem(id);
   }
 }

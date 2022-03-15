@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MenuItemDaoImpl implements MenuDao{
+public class MenuItemDaoImpl implements MenuDao {
 
   @Autowired
   private EntityManager entityManager;
@@ -23,5 +23,12 @@ public class MenuItemDaoImpl implements MenuDao{
     Session currentSession = entityManager.unwrap(Session.class);
     Query<MenuItem> query = currentSession.createQuery("FROM MenuItem", MenuItem.class);
     return query.getResultList();
+  }
+
+  @Override
+  public MenuItem findOneMenu(Integer id) {
+    Session currentSession = entityManager.unwrap(Session.class);
+    Query<MenuItem> query = currentSession.createQuery("FROM MenuItem WHERE menu_id = " + id, MenuItem.class);
+    return query.getResultList().get(0);
   }
 }

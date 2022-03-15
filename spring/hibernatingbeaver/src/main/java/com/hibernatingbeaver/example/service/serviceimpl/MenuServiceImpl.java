@@ -19,4 +19,9 @@ public class MenuServiceImpl implements MenuService {
   public List<MenuItem> getAllMenuItems() {
     return menuDao.getAllMenuItem();
   }
+
+  @Override
+  public MenuItem findOMenuItem(Integer id) {
+    return menuDao.findOneMenu(id);
+  }
 }
