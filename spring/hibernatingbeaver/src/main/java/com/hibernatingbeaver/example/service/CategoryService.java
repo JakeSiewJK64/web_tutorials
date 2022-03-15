@@ -6,6 +6,6 @@ import com.hibernatingbeaver.example.models.Category;
 
 public interface CategoryService {
   List<Category> getAllCategory();
-
+  Category findOneCategory(String name);
   void saveCategory(Category category);
 }

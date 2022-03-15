@@ -29,4 +29,13 @@ public class CategoryDaoImpl implements CategoryDao {
     // TODO Auto-generated method stub
 
   }
+
+  @Override
+  public Category findOneCategory(String name) {
+    Session currentSession = entityManager.unwrap(Session.class);
+    String queryString = "FROM Category AS C WHERE C.categoryName = :name";
+    Query<Category> query = currentSession.createQuery(queryString, Category.class);
+    query.setParameter("name", name);
+    return query.getResultList().get(0);
+  }
 }
