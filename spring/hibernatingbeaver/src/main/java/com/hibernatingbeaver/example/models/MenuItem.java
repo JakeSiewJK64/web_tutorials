@@ -23,6 +23,7 @@ public class MenuItem {
   private Float stock;
 
   public MenuItem() {
+    // COMMENT: Empty Contructor
   }
 
   public Integer getMenuId() {
