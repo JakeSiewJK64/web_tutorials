@@ -16,14 +16,19 @@ public class CategoryServiceImpl implements CategoryService {
   @Autowired
   private CategoryDao categoryDao;
 
-  @Transactional
   @Override
   public List<Category> getAllCategory() {
     return categoryDao.getAllCategory();
   }
-
+  
   @Override
-  public void saveCategory(Category category) {
+  public String saveCategory(Category category) {
+    try {
+      categoryDao.saveCategory(category);
+      return "Save Successful!";
+    } catch (Exception e) {
+      throw e;
+    }
   }
 
   @Override

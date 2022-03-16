@@ -11,5 +11,5 @@ public interface CategoryService {
 
   List<Category> paginatedCategories(Integer page, Integer pageSize);
 
-  void saveCategory(Category category);
+  String saveCategory(Category category);
 }
