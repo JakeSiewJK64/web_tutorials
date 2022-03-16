@@ -28,4 +28,10 @@ public class MenuController {
   public MenuItem findOneMenu(@RequestParam Integer id) {
     return menuService.findOMenuItem(id);
   }
+
+  @ResponseBody
+  @GetMapping("paginatedMenu")
+  public List<MenuItem> paginatedMenu(@RequestParam Integer page, Integer pageSize) {
+    return menuService.paginatedMenu(page, pageSize);
+  }
 }

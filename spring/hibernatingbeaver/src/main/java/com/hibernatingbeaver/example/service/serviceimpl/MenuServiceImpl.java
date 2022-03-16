@@ -24,4 +24,9 @@ public class MenuServiceImpl implements MenuService {
   public MenuItem findOMenuItem(Integer id) {
     return menuDao.findOneMenu(id);
   }
+
+  @Override
+  public List<MenuItem> paginatedMenu(Integer page, Integer pageSize) {
+    return menuDao.getPagedMenu(page, pageSize);
+  }
 }

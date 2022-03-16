@@ -38,4 +38,13 @@ public class CategoryDaoImpl implements CategoryDao {
     query.setParameter("name", name);
     return query.getResultList().get(0);
   }
+
+  @Override
+  public List<Category> paginatedCategory(Integer page, Integer pageIndex) {
+    Session currentSession = entityManager.unwrap(Session.class);
+    Query<Category> query = currentSession.createQuery("FROM Category", Category.class);
+    query.setFirstResult(page - 1);
+    query.setMaxResults(pageIndex);
+    return query.list();
+  }
 }

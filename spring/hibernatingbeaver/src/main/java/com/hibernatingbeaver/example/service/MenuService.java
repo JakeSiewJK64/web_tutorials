@@ -6,5 +6,8 @@ import com.hibernatingbeaver.example.models.MenuItem;
 
 public interface MenuService {
   List<MenuItem> getAllMenuItems();
+
   MenuItem findOMenuItem(Integer id);
+
+  List<MenuItem> paginatedMenu(Integer page, Integer pageSize);
 }

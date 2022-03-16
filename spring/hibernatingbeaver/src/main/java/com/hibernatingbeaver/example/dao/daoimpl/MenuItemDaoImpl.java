@@ -31,4 +31,13 @@ public class MenuItemDaoImpl implements MenuDao {
     Query<MenuItem> query = currentSession.createQuery("FROM MenuItem WHERE menu_id = " + id, MenuItem.class);
     return query.getResultList().get(0);
   }
+
+  @Override
+  public List<MenuItem> getPagedMenu(Integer pageNumber, Integer pageSize) {
+    Session currentSession = entityManager.unwrap(Session.class);
+    Query<MenuItem> query = currentSession.createQuery("FROM MenuItem", MenuItem.class);
+    query.setFirstResult(pageNumber - 1);
+    query.setMaxResults(pageSize);
+    return query.list();
+  }
 }

@@ -30,4 +30,9 @@ public class CategoryServiceImpl implements CategoryService {
   public Category findOneCategory(String name) {
     return categoryDao.findOneCategory(name);
   }
+
+  @Override
+  public List<Category> paginatedCategories(Integer page, Integer pageSize) {
+    return categoryDao.paginatedCategory(page, pageSize);
+  }
 }
