@@ -2,7 +2,9 @@ const router = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
 const { weakness } = new PrismaClient();
 
-router.get("/", async (_, res) => {
+router.get("/", async (req, res) => {
+  const { page, pageSize } = req.body;
+
   const weaknesses = await weakness.findMany({
     select: {
       type: true,
@@ -12,7 +14,9 @@ router.get("/", async (_, res) => {
       pokemonId: true,
     },
   });
-  res.json(weaknesses);
+  const firstIndex = (page - 1) * pageSize;
+  const lastIndex = page * pageSize;
+  res.json(weaknesses.splice(firstIndex, lastIndex));
 });
 
 module.exports = router;
