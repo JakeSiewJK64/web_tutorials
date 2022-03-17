@@ -15,6 +15,7 @@ import { BankStore } from "./components/redux-tutorial/store/bank-store";
 import Bankredux from "./components/redux-tutorial/redux-pages/bank/bank-redux";
 import Pokemonredux from "./components/redux-tutorial/redux-pages/pokemon/pokemon-redux";
 import PokemonContext from "./components/context-tutorial/pokemon/pokemon-context";
+import Books from "./components/book/books";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,9 @@ function App() {
               <Route path="reduxtutorial">
                 <Route path="bankredux" element={<Bankredux />} />
                 <Route path="pokemonredux" element={<Pokemonredux />} />
+              </Route>
+              <Route path="book">
+                <Route path="books" element={<Books />} />
               </Route>
               <Route path="screen">
                 <Route path="responsive" element={<ResponsiveScreen />} />
