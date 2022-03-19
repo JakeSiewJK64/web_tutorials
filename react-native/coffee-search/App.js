@@ -1,5 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, Button } from "react-native";
+
+import { useState } from "react";
+
 import CategoryItem from "./src/components/categoryItem";
 import Header from "./src/components/header";
 import Searchbar from "./src/components/searchbar";
@@ -11,6 +14,7 @@ import mocha from "./assets/coffee/mocha.jpg";
 import cappuccino from "./assets/coffee/cappuccino.jpg";
 
 export default function App() {
+  const [active, setActive] = useState();
   const coffees = [
     { image: americano, name: "americano" },
     { image: latte, name: "latte" },
@@ -28,6 +32,7 @@ export default function App() {
       marginLeft: 20,
     },
   });
+
   return (
     <View>
       <StatusBar />
@@ -37,13 +42,15 @@ export default function App() {
         style={style.coffeeContainer}
         data={coffees}
         horizontal
-        keyExtractor={(cat, id) => id}
+        keyExtractor={(_, id) => id}
         renderItem={({ item, i }) => (
           <CategoryItem
             key={i}
             index={i}
             coffee={item.image}
             name={item.name}
+            handlePress={setActive}
+            active={active === item.name}
           />
         )}
       />

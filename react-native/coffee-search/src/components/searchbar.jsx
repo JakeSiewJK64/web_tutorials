@@ -19,7 +19,7 @@ export default function Searchbar() {
   return (
     <View style={[searchbarStyle.container, searchbarStyle.Elevation]}>
       <FontAwesome name="search" size={25} />
-      <TextInput placeholder="Coffee Input" />
+      <TextInput placeholder="Coffee Input" style={ {width: "100%"} } />
     </View>
   )
 }
