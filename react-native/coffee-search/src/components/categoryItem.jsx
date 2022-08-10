@@ -5,7 +5,7 @@ import { Elevation } from '../styles';
 export default function CategoryItem({ coffee, name, index, handlePress, active }) {
 
   const style = StyleSheet.create({
-    container: {
+    container: { 
       marginHorizontal: 25,
       alignItems: "center",
       width: 100,
