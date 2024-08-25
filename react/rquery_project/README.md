@@ -1,5 +1,10 @@
 ### Sample React Query Applications
+
+#### infinite query with characters
 ![infinite_query](./screenshots/infinite_query_sample.png)
+
+
+#### react query with backend pagination
 ![react_query](./screenshots/react_query_table.png)
 
 ### React + TypeScript + Vite
