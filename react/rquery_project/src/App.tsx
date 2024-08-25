@@ -21,10 +21,8 @@ function App() {
         </div>
       </Route>
       <Route path="/infinite-characters" exact>
-        <div style={{ width: "80rem" }}>
-          <h2>Infinte Query:</h2>
-          <CharacterInfiniteScroll />
-        </div>
+        <h2>Infinte Query:</h2>
+        <CharacterInfiniteScroll />
       </Route>
     </BrowserRouter>
   );

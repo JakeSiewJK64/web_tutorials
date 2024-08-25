@@ -33,7 +33,7 @@ export const useGetInfiniteCharacters = ({
       data: Character[];
       nextPage: number | null;
     }>({
-      queryKey: ["characters-infinite"],
+      queryKey: ["characters-infinite", { characterStatus }],
       queryFn: getCharacters,
       getNextPageParam: (lastPage) => {
         const nextPage = lastPage.nextPage;
