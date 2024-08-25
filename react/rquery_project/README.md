@@ -2,11 +2,13 @@
 
 #### infinite query with characters
 route: `/infinite-characters`
+
 ![infinite_query](./screenshots/infinite_query_sample.png)
 
 
 #### react query with backend pagination
 route: `/`
+
 ![react_query](./screenshots/react_query_table.png)
 
 ### React + TypeScript + Vite
