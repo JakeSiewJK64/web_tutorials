@@ -1,4 +1,8 @@
-# React + TypeScript + Vite
+### Sample React Query Applications
+![infinite_query](./screenshots/infinite_query_sample.png)
+![react_query](./screenshots/react_query_table.png)
+
+### React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
