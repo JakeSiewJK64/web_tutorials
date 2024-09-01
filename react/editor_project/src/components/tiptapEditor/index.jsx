@@ -12,6 +12,10 @@ const TipTapEditor = () => {
   const editor = useEditor({
     extensions,
     content,
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      console.log(html);
+    },
   });
 
   return (
