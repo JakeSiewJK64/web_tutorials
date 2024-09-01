@@ -42,12 +42,6 @@ export const EditorMenubar = ({ editor }) => {
       >
         Code
       </Button>
-      <Button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-        Clear marks
-      </Button>
-      <Button onClick={() => editor.chain().focus().clearNodes().run()}>
-        Clear nodes
-      </Button>
       <Button
         onClick={() => editor.chain().focus().setParagraph().run()}
         className={editor.isActive("paragraph") ? "is-active" : ""}
@@ -114,9 +108,6 @@ export const EditorMenubar = ({ editor }) => {
       >
         Blockquote
       </Button>
-      <Button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-        Horizontal rule
-      </Button>
       <Button onClick={() => editor.chain().focus().setHardBreak().run()}>
         Hard break
       </Button>
@@ -131,14 +122,6 @@ export const EditorMenubar = ({ editor }) => {
         disabled={!editor.can().chain().focus().redo().run()}
       >
         Redo
-      </Button>
-      <Button
-        onClick={() => editor.chain().focus().setColor("#958DF1").run()}
-        className={
-          editor.isActive("textStyle", { color: "#958DF1" }) ? "is-active" : ""
-        }
-      >
-        Purple
       </Button>
     </div>
   );
