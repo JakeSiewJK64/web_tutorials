@@ -1,12 +1,28 @@
 /* eslint-disable no-unused-vars */
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { Component } from "react";
+import { Component, useEffect } from "react";
+import { posthog } from "posthog-js";
 import "./App.css";
 
 const CustomErrorPage = () => {
   return <div>i am custom error page</div>;
+};
+
+const PosthogPageViewTracker = () => {
+  let location = useLocation();
+
+  // Track pageviews
+  useEffect(() => {
+    if (posthog) {
+      posthog.capture("$pageview", {
+        $current_url: window.location.href,
+      });
+    }
+  }, [location]);
+
+  return null;
 };
 
 class ErrorBoundary extends Component {
@@ -78,6 +94,7 @@ function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
+        <PosthogPageViewTracker />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
