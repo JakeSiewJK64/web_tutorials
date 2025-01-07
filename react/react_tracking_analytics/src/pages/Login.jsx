@@ -1,11 +1,20 @@
+import { useState } from "react";
+import { LoginForm } from "../components/LoginForm";
+
 export const Login = () => {
-  try {
-    const array = undefined;
+  const [password, setPassword] = useState(null);
+  const [username, setUsername] = useState(null);
 
-    console.log(array[0]);
-
-    return <div>Login</div>;
-  } catch (error) {
-    throw new Error(error);
-  }
+  return (
+    <div>
+      <LoginForm
+        onFormSubmit={(e) => {
+          setUsername(e.username);
+          setPassword(e.password);
+        }}
+      />
+      <p>username: {username}</p>
+      <p>password: {password}</p>
+    </div>
+  );
 };

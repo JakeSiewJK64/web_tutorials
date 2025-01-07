@@ -26,3 +26,27 @@ test.describe("test home page", () => {
     ).toBeVisible();
   });
 });
+
+test.describe("test login pagee", () => {
+  // go to localhost before running any tests
+  test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:5173/login");
+  });
+
+  test("input username and password", async ({ page }) => {
+    await page.getByPlaceholder("username").fill("my username");
+
+    await page
+      .getByRole("button", {
+        name: "Sign In",
+        exact: false,
+      })
+      .click();
+
+    await expect(
+      page.getByText("my username", {
+        exact: false,
+      })
+    ).toBeVisible();
+  });
+});
